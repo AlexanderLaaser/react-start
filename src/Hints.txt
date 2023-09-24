@@ -1,0 +1,8 @@
+Installation:
+Node js > 12
+
+Setup:
+Format Changes to Prettier
+
+Useful Keybinds:
+1. Control + D & Tastenkombi: Markiert mehrere Zeilen und ändert Values
