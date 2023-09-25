@@ -1,19 +1,24 @@
 import { useState } from "react";
-
+// test
 // Thats a component
-function ListGroup() {
-  let listOfItems = ["Volleyball", "Gaming", "Club"];
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+  onSelectitem: (item: string) => void;
+}
 
+//This is functional programming. All of the props are reusable or immutable, because its pretty unlickly you will change it with content
+function ListGroup({ items, heading, onSelectitem }: ListGroupProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>Thats a List</h1>
+      <h1>{heading}</h1>
       {/*Normale Implementierung mit If/else*/}
       {/*{listOfItems.length === 0 ? <p>No item found</p> : null}*/}
-      {listOfItems.length === 0 && <p>No item found</p>}
+      {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
-        {listOfItems.map((item, index) => (
+        {items.map((item, index) => (
           <li
             className={
               selectedIndex === index
@@ -23,6 +28,7 @@ function ListGroup() {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectitem(item);
             }}
           >
             {item}
